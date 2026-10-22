@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio Alejandro Paipay</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una columna de lectura con rótulos laterales en escritorio; proyectos como fichas técnicas con antes/ahora y un fragmento visual del propio sistema. */
+:root{
+  --bg:#F3F6F7; --surface:#FFFFFF; --fg:#10222A; --muted:#51666F; --line:#D3DDE1;
+  --accent:#0B6E78; --accent-soft:#DCEFF1; --signal:#B4530A; --signal-soft:#FBE9D8;
+  --ok:#1F7A4D;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0C1A20; --surface:#122830; --fg:#E4EEF0; --muted:#97AEB6; --line:#244049;
+  --accent:#5CC3CD; --accent-soft:#163A41; --signal:#F0A260; --signal-soft:#3B2A18; --ok:#6FCB9A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1A20; --surface:#122830; --fg:#E4EEF0; --muted:#97AEB6; --line:#244049;
+  --accent:#5CC3CD; --accent-soft:#163A41; --signal:#F0A260; --signal-soft:#3B2A18; --ok:#6FCB9A; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--body);margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+.wrap{max-width:1000px;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.1;margin:0}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+nav{display:flex;flex-wrap:wrap;gap:6px 22px;padding:18px 0;border-bottom:1px solid var(--line);font:500 13px var(--mono)}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero{padding:56px 0 48px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;letter-spacing:-.02em}
+.hero h1 span{color:var(--accent)}
+.hero p.lead{font-size:1.15rem;color:var(--muted);max-width:52ch;margin:20px 0 0}
+.facts{display:grid;gap:0;border-top:1px solid var(--line);margin:0}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.facts dt{color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+.facts dd{margin:0;text-align:right;font-weight:500}
+
+section{padding:56px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:20px 40px}
+section>.eyebrow{padding-top:8px}
+section>div{min-width:0}
+h2{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700;letter-spacing:-.01em;margin-bottom:28px}
+
+/* project */
+.project{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:28px;margin-bottom:28px}
+.project h3{font-size:1.9rem;font-weight:700}
+.project-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px;align-items:baseline;margin-bottom:6px}
+.badge{font:500 12px var(--mono);padding:4px 10px;border-radius:99px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.badge.dev{background:var(--signal-soft);color:var(--signal)}
+.tagline{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.pcs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:24px}
+.pcs h4{margin:0 0 6px;font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.pcs p{margin:0;font-size:15px;color:var(--fg)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:24px}
+.ba>div{padding:16px 18px}
+.ba>div:first-child{background:var(--signal-soft)}
+.ba>div:last-child{background:var(--accent-soft)}
+.ba h4{margin:0 0 8px;font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.ba>div:first-child h4{color:var(--signal)}
+.ba>div:last-child h4{color:var(--accent)}
+.ba ul{margin:0;padding-left:18px;font-size:14.5px}
+.ba li{margin:3px 0}
+.stats{display:flex;flex-wrap:wrap;gap:10px 34px;margin:0 0 22px;padding:0;list-style:none}
+.stats li{display:flex;flex-direction:column}
+.stats b{font:700 1.7rem/1 var(--display);font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted);margin-top:4px}
+.tech{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.tech li{font:400 12.5px var(--mono);border:1px solid var(--line);border-radius:3px;padding:3px 9px;color:var(--muted)}
+
+/* fragments of the real systems */
+.frag{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:16px;margin-bottom:24px;min-width:0}
+.frag .cap{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.scroll{overflow-x:auto}
+.ruler{font:400 12.5px/1.5 var(--mono);white-space:pre;margin:0;color:var(--fg)}
+.ruler i{font-style:normal;color:var(--muted)}
+.ruler b{font-weight:500;color:var(--accent)}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.step{flex:1 1 150px;border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:10px 12px;font-size:13.5px}
+.step small{display:block;font:500 11px var(--mono);color:var(--muted);margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase}
+.step.res{border-color:var(--accent);background:var(--accent-soft)}
+.step.res strong{color:var(--accent)}
+table.cols{border-collapse:collapse;font:400 12.5px var(--mono);min-width:420px;width:100%}
+table.cols th,table.cols td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:left}
+table.cols th{color:var(--muted);font-weight:500}
+
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 24px}
+.shots figure{margin:0;min-width:0}
+.shots button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:4px;background:#0b1217;cursor:zoom-in;overflow:hidden}
+.shots button:hover{border-color:var(--link,var(--accent))}
+.shots img{display:block;width:100%;aspect-ratio:16/8;object-fit:cover;object-position:top left}
+.shots figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,12,16,.92);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lightbox[hidden]{display:none}
+.lightbox img{max-width:100%;max-height:100%;border-radius:4px}
+@media (max-width:760px){.shots{grid-template-columns:1fr}}
+/* experience */
+.job{display:grid;grid-template-columns:150px 1fr;gap:6px 24px;padding:0 0 26px}
+.job .when{font:400 13px var(--mono);color:var(--muted);padding-top:4px}
+.job h3{font-size:1.25rem;font-weight:700}
+.job .org{color:var(--accent);font-weight:500;margin:2px 0 8px}
+.job ul{margin:0;padding-left:18px}
+.job li{margin:4px 0}
+
+/* stack */
+.stack{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 36px}
+.stack h3{font:500 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.stack p{margin:0;font-size:15px}
+.certs{display:grid;gap:12px}
+.cert{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:12px}
+.cert span{font:400 13px var(--mono);color:var(--muted)}
+
+/* contact */
+.contact p.big{font:700 clamp(1.5rem,3vw,2rem)/1.2 var(--display);max-width:26ch;margin:0 0 22px}
+.contact-list{display:grid;gap:10px;max-width:460px}
+.crow{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:10px 14px;min-width:0}
+.crow span{overflow-wrap:anywhere;font-size:15px}
+.crow small{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+button.copy{font:500 12px var(--mono);background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:3px;padding:5px 10px;cursor:pointer;flex:none}
+button.copy:hover{background:var(--accent-soft)}
+footer{padding:28px 0 44px;border-top:1px solid var(--line);font:400 12.5px var(--mono);color:var(--muted)}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:36px}
+  section{grid-template-columns:1fr;padding:40px 0}
+  .pcs,.ba,.stack{grid-template-columns:1fr}
+  .project{padding:20px}
+  .job{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav aria-label="Secciones">
+    <a href="#proyectos">Proyectos</a><a href="#experiencia">Experiencia</a><a href="#habilidades">Habilidades</a><a href="#contacto">Contacto</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Lima, Perú · Ingeniero de software</p>
+      <h1 style="margin-top:16px">Alejandro Jefferson <span>Paipay Yauyo</span></h1>
+      <p class="lead">Analista de sistemas en un restaurante de alta demanda. Mantengo el POS y el inventario, y construyo mis propios sistemas para eliminar el trabajo manual que se repite cada semana.</p>
+    </div>
+    <dl class="facts">
+      <div><dt>Formación</dt><dd>Bachiller en Ing. de Software, UTP</dd></div>
+      <div><dt>Experiencia</dt><dd>2 años como analista de sistemas</dd></div>
+      <div><dt>Sistemas</dt><dd>Oracle MICROS Simphony e Inventory</dd></div>
+      <div><dt>Desarrollo</dt><dd>Python, Java, SQL, programación con IA</dd></div>
+    </dl>
+  </header>
+
+  <section id="proyectos">
+    <p class="eyebrow">Proyectos</p>
+    <div>
+      <h2>Sistemas que resuelven un problema real de operación</h2>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Decacontable</h3>
+          <span class="badge">En uso diario</span>
+        </div>
+        <p class="tagline">Del archivo diario de Oracle Inventory al archivo contable, sin copiar nada a mano.</p>
+
+        <div class="shots">
+          <figure><button type="button" data-full="images/pre1.jpg" aria-label="Ampliar captura: Panel"><img src="images/pre1.jpg" alt="Panel de Decacontable con el cargador de archivos INV y los procesos recientes" loading="lazy"></button><figcaption>Panel: se sube el INV del día y se descarga el CC.</figcaption></figure>
+          <figure><button type="button" data-full="images/pre2.jpg" aria-label="Ampliar captura: Historial de INV cargados, con su estado."><img src="images/pre2.jpg" alt="Historial de procesos cargados en Decacontable, todos en estado listo" loading="lazy"></button><figcaption>Historial de INV cargados, con su estado.</figcaption></figure>
+          <figure><button type="button" data-full="images/pre3.jpg" aria-label="Ampliar captura: Detalle de un día y ajustes por factura (datos de ejemplo)."><img src="images/pre3.jpg" alt="Detalle de un día en Decacontable con facturas, ajustes por factura y avisos" loading="lazy"></button><figcaption>Detalle de un día y ajustes por factura. Montos y proveedores ocultos.</figcaption></figure>
+        </div>
+
+        <div class="pcs">
+          <div><h4>Problema</h4><p>Cada martes se copiaba factura por factura del archivo de Inventory al archivo contable. Los errores se notaban tarde y no quedaba historial.</p></div>
+          <div><h4>Solución</h4><p>Un sistema web que lee el archivo diario tal cual, cruza cada línea contra un maestro de artículos y arma el archivo de ancho fijo que pide el sistema contable.</p></div>
+          <div><h4>Resultado</h4><p>La tarea pasó de horas a minutos. Los avisos aparecen antes de generar el archivo y cada ajuste queda registrado por factura.</p></div>
+        </div>
+
+        <ul class="stats">
+          <li><b>1,360</b><span>artículos en el maestro</span></li>
+          <li><b>315</b><span>caracteres por línea del archivo final</span></li>
+          <li><b>127</b><span>pruebas automáticas</span></li>
+        </ul>
+
+        <div class="frag">
+          <div class="cap">Flujo diario</div>
+          <div class="steps">
+            <div class="step"><small>1</small>Subir el archivo de Inventory</div>
+            <div class="step"><small>2</small>Cruce con el maestro: cuenta, CTAPRO, % de IGV</div>
+            <div class="step"><small>3</small>Corregir errores en pantalla</div>
+            <div class="step res"><small>4</small><strong>Descargar el archivo contable</strong></div>
+          </div>
+        </div>
+
+        <div class="ba">
+          <div><h4>Antes</h4><ul><li>Horas copiando cada factura, cada martes</li><li>Errores que se veían tarde o nunca</li><li>Sin respaldo para revisar qué pasó</li></ul></div>
+          <div><h4>Ahora</h4><ul><li>Minutos para revisar y descargar</li><li>Avisos claros antes de generar el archivo</li><li>Historial de cada factura y ajuste, con opción de restaurar el original</li></ul></div>
+        </div>
+
+        <p style="font-size:15px;margin:0 0 20px"><strong>Casos que resuelve solo:</strong> facturas en dólares con tipo de cambio, guías pendientes de factura oficial, notas de crédito, artículos inafectos al IGV, nombres de proveedor truncados y facturas faltantes leídas desde el PDF de recepción. Si un artículo no está en el maestro, avisa y bloquea en lugar de inventar un dato. El archivo original de Inventory nunca se modifica.</p>
+
+        <ul class="tech"><li>Python</li><li>Archivos de ancho fijo</li><li>Excel / PDF</li><li>Pruebas automáticas</li><li>Oracle Inventory</li></ul>
+      </article>
+
+      <article class="project">
+        <div class="project-head">
+          <h3>Decaconteo</h3>
+          <span class="badge">Funcional · listo para operar</span>
+        </div>
+        <p class="tagline">Conteo físico de inventario de Cocina y Bar con varios auditores al mismo tiempo, desde tablet o celular.</p>
+
+        <div class="shots">
+          <figure><button type="button" data-full="images/pre4.jpg" aria-label="Ampliar captura: Panel de administración"><img src="images/pre4.jpg" alt="Panel de administración de Decaconteo con los catálogos de Cocina y Bar" loading="lazy"></button><figcaption>Panel de administración: usuarios, maestros y modificaciones.</figcaption></figure>
+          <figure><button type="button" data-full="images/pre5.jpg" aria-label="Ampliar captura: Maestro de Bar"><img src="images/pre5.jpg" alt="Maestro de Bar con la configuración de presentaciones por peso de botella" loading="lazy"></button><figcaption>Maestro de Bar: presentaciones y peso de botella llena.</figcaption></figure>
+          <figure><button type="button" data-full="images/pre6.jpg" aria-label="Ampliar captura: Periodos de conteo de Cocina y Bar."><img src="images/pre6.jpg" alt="Periodos de conteo abiertos para Cocina Principal y Bar" loading="lazy"></button><figcaption>Periodos de conteo de Cocina y Bar.</figcaption></figure>
+        </div>
+
+        <div class="pcs">
+          <div><h4>Problema</h4><p>El conteo físico se hacía en listas separadas, sin control de quién contó qué ni forma de corregir un error después de entregar.</p></div>
+          <div><h4>Solución</h4><p>Una aplicación web con panel de administrador y panel de auditor. Cada auditor ve solo su área, guarda avance automático y sella su conteo al terminar.</p></div>
+          <div><h4>Resultado</h4><p>Un consolidado en Excel al cierre, con trazabilidad completa y sin instalar nada en los dispositivos. Superó 4 pruebas internas; su primer cierre real en la operación es a fin de mes.</p></div>
+        </div>
+
+        <ul class="stats">
+          <li><b>11</b><span>cupos de auditor (9 Cocina, 2 Bar)</span></li>
+          <li><b>2</b><span>catálogos independientes</span></li>
+          <li><b>100%</b><span>web, sin instalación</span></li>
+        </ul>
+
+        <div class="frag">
+          <div class="cap">Bar: cómo se calcula el líquido de una botella abierta</div>
+          <div class="steps">
+            <div class="step"><small>Pesar</small>Botella abierta: peso encontrado</div>
+            <div class="step"><small>Contar</small>Botellas cerradas, sin pesar</div>
+            <div class="step"><small>Calcular</small>Resta la tara y suma el contenido de etiqueta</div>
+            <div class="step res"><small>Resultado</small><strong>Cantidad contada, lista para guardar</strong></div>
+          </div>
+        </div>
+
+        <div class="frag">
+          <div class="cap">Formato de exportación a Excel</div>
+          <div class="scroll">
+            <table class="cols" aria-label="Columnas del Excel exportado">
+              <thead><tr><th>Cod</th><th>Articulo</th><th>Grupo</th><th>Unidad</th><th>Num-Total</th></tr></thead>
+              <tbody><tr><td colspan="5" style="color:var(--muted)">Un archivo consolidado y uno por cada auditor, con el mismo formato.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <p style="font-size:15px;margin:0 0 20px"><strong>Control de errores:</strong> una lista sellada queda bloqueada con fecha, hora y auditor. Si hay un error, el auditor pide una modificación excepcional con su motivo, el administrador la aprueba o rechaza, y se conservan las dos versiones para elegir cuál consolidar.</p>
+
+        <ul class="tech"><li>Aplicación web</li><li>Roles y permisos</li><li>Exportación a Excel</li><li>Diseño con IA</li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <p class="eyebrow">Experiencia</p>
+    <div>
+      <h2>Dos años manteniendo sistemas que no pueden caerse</h2>
+      <div class="job">
+        <div class="when">Set 2024 – Actualidad</div>
+        <div>
+          <h3>Analista de sistemas</h3>
+          <div class="org">La Rosa Náutica S.A.</div>
+          <ul>
+            <li>Mantenimiento y resolución de incidencias en Oracle MICROS Simphony y en el módulo Inventory.</li>
+            <li>Integración entre el POS y el inventario para compras, almacén y control de existencias.</li>
+            <li>Soporte técnico y capacitación a usuarios, con el objetivo de reducir tiempos de inactividad.</li>
+            <li>Atención y mantenimiento de equipos de cómputo, redes y servidores.</li>
+            <li>Archivos de migración semanales, ahora automatizados con Decacontable.</li>
+            <li>Servidor de archivos NAS, redes, cableado a gabinetes, ponchado RJ45 e instalación de cámaras.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job">
+        <div class="when">Mar – Dic 2023</div>
+        <div>
+          <h3>Docente de computación y física</h3>
+          <div class="org">I.E.P. Gabriel García Márquez</div>
+          <ul>
+            <li>Plantillas en Excel que redujeron 50% el tiempo de gestión de calificaciones.</li>
+            <li>Servicio técnico y mantenimiento de computadoras de la institución.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <p class="eyebrow">Habilidades</p>
+    <div>
+      <h2>Stack</h2>
+      <div class="stack">
+        <div><h3>Sistemas empresariales</h3><p>Oracle MICROS Simphony, Oracle Hospitality Inventory Management, integración de datos, MQ.</p></div>
+        <div><h3>Desarrollo</h3><p>Python (intermedio), Java, HTML, CSS, JavaScript, SQL, programación y diseño de sistemas con IA.</p></div>
+        <div><h3>Infraestructura</h3><p>Servidor NAS, redes, cableado estructurado, cámaras, hardware y soporte técnico.</p></div>
+        <div><h3>Ofimática</h3><p>Excel avanzado, automatizaciones en Office 365, Power BI.</p></div>
+      </div>
+      <h3 style="font-size:1.2rem;margin:40px 0 14px">Certificaciones</h3>
+      <div class="certs">
+        <div class="cert"><strong>Desarrollador de Aplicaciones Móviles</strong><span>UTP · Oct 2023</span></div>
+        <div class="cert"><strong>Tutor STEM Física</strong><span>UTP · Oct 2023</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <p class="eyebrow">Contacto</p>
+    <div>
+      <p class="big">Busco un puesto donde seguir construyendo sistemas útiles.</p>
+      <div class="contact-list">
+        <div class="crow"><div><small>Correo</small><span id="c1">alejandrojeffersonpy@gmail.com</span></div><button class="copy" data-t="c1" type="button">Copiar</button></div>
+        <div class="crow"><div><small>LinkedIn</small><span><a href="https://www.linkedin.com/in/alejandro-jefferson-paipay-yauyo-210024237" target="_blank" rel="noopener">alejandro-jefferson-paipay-yauyo</a></span></div></div>
+        <div class="crow"><div><small>WhatsApp</small><span id="c2">+51 967 000 968</span></div><button class="copy" data-t="c2" type="button">Copiar</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Las capturas usan datos de ejemplo, no datos reales de la empresa.</footer>
+  <div class="lightbox" id="lb" hidden><img id="lbimg" alt=""></div>
+</div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'),li=document.getElementById('lbimg');
+  document.querySelectorAll('.shots button').forEach(function(b){
+    b.addEventListener('click',function(){li.src=b.dataset.full;li.alt=b.querySelector('img').alt;lb.hidden=false});
+  });
+  lb.addEventListener('click',function(){lb.hidden=true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true});
+})();
+document.querySelectorAll('button.copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.t);
+    var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar'},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(el.textContent).then(done,sel);
+    }else{sel()}
+  });
+});
+</script>
+
+</body>
+</html>
